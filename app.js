@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  function toggleClasses(element) {
-    for (let i = 1; i < arguments.length; i++) {
-      element.classList.toggle(arguments[i]);
-    }
+  function toggleClasses(element, ...classNames) {
+    classNames.forEach(name => element.classList.toggle(name));
   }
+
+  // function toggleClasses()
 
   function startGame() {
     // get random words and append them to the DOM
@@ -43,11 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let idx1 = arrayCopy.length - 1; idx1 > 0; idx1--) {
       // generate a random index between 0 and idx1 (inclusive)
       let idx2 = Math.floor(Math.random() * (idx1 + 1));
-
-      // swap elements at idx1 and idx2
-      let temp = arrayCopy[idx1];
-      arrayCopy[idx1] = arrayCopy[idx2];
-      arrayCopy[idx2] = temp;
+      
+      // Destructuring
+      [arrayCopy[idx1], arrayCopy[idx2]] = [arrayCopy[idx2], arrayCopy[idx1]];
     }
     return arrayCopy;
   }
