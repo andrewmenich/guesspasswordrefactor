@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let guessCount = 4;
   let password = '';
 
-  const start = document.getElementById('start');
+  let start = document.getElementById('start');
   start.addEventListener('click', function() {
     toggleClasses(document.getElementById('start-screen'), 'hide', 'show');
     toggleClasses(document.getElementById('game-screen'), 'hide', 'show');
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function startGame() {
     // get random words and append them to the DOM
-    const wordList = document.getElementById("word-list");
-    const randomWords = getRandomValues(words, wordCount);
+    let wordList = document.getElementById("word-list");
+    let randomWords = getRandomValues(words, wordCount);
     randomWords.forEach(function(word) {
       let li = document.createElement("li");
       li.innerText = word;
@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function shuffle(array) {
-    const arrayCopy = array.slice();
+    let arrayCopy = array.slice();
     for (let idx1 = arrayCopy.length - 1; idx1 > 0; idx1--) {
       // generate a random index between 0 and idx1 (inclusive)
-      const idx2 = Math.floor(Math.random() * (idx1 + 1));
+      let idx2 = Math.floor(Math.random() * (idx1 + 1));
 
       // swap elements at idx1 and idx2
-      const temp = arrayCopy[idx1];
+      let temp = arrayCopy[idx1];
       arrayCopy[idx1] = arrayCopy[idx2];
       arrayCopy[idx2] = temp;
     }
@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function setGuessCount(newCount) {
     guessCount = newCount;
-    document.getElementById("guesses-remaining").innerText = "Guesses remaining: " + guessCount + ".";
+    document.getElementById("guesses-remaining").innerText = `Guesses remaining: ${guessCount}.`;
   }
 
   function updateGame(e) {
     if (e.target.tagName === "LI" && !e.target.classList.contains("disabled")) {
       // grab guessed word, check it against password, update view
-      const guess = e.target.innerText;
-      const similarityScore = compareWords(guess, password);
+      let guess = e.target.innerText;
+      let similarityScore = compareWords(guess, password);
       e.target.classList.add("disabled");
-      e.target.innerText = e.target.innerText + " --> Matching Letters: " + similarityScore;
+      e.target.innerText = `${e.target.innerText } --> Matching Letters: ${similarityScore}`;
       setGuessCount(guessCount - 1);
 
       // check whether the game is over
