@@ -1,5 +1,7 @@
-# Guess the Password
+# Guess the Password Refactor
 
-Simple browser game with an ES2015 refactor. Open `index.html` in the browser to play the game. 
+[Link to original source-code.](https://github.com/rithmschool/guess_the_password)
 
-If you'd like to see some ES2015 features in the JavaScript code (including `let`, `const`, arrow functions, and more), check out the `ES2015` branch.
+Simple browser game with an ES2015 refactor. Completed as part of The Advanced Web Developer Bootcamp (Colt Steele) on Udemy.
+
+I did not write the original code, I have only refactored it using ES6 for educational purposes. Please view the "ES2015" branch to view the refactored code.
