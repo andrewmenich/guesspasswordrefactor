@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   const wordCount = 10;
   let guessCount = 4;
   let password = '';
 
   let start = document.getElementById('start');
-  start.addEventListener('click', function() {
+  start.addEventListener('click', () => {
     toggleClasses(document.getElementById('start-screen'), 'hide', 'show');
     toggleClasses(document.getElementById('game-screen'), 'hide', 'show');
     startGame();
   });
+
 
   function toggleClasses(element) {
     for (let i = 1; i < arguments.length; i++) {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // get random words and append them to the DOM
     let wordList = document.getElementById("word-list");
     let randomWords = getRandomValues(words, wordCount);
-    randomWords.forEach(function(word) {
+    randomWords.forEach((word) => {
       let li = document.createElement("li");
       li.innerText = word;
       wordList.appendChild(li);
@@ -34,9 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
     wordList.addEventListener('click', updateGame);
   }
 
-  function getRandomValues(array, numberOfVals) {
-    return shuffle(array).slice(0, numberOfVals);
-  }
+  let getRandomValues = (array, numVals = wordCount) => shuffle(array).slice(0, numVals);
+
 
   function shuffle(array) {
     let arrayCopy = array.slice();
